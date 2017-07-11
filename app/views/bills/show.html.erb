@@ -18,7 +18,7 @@
 <%= link_to 'Edit', edit_bill_path(@bill) %> |
 <%= link_to 'Back', bills_path %>
 
-<h1>Listing items</h1>
+<h1>Work Completed</h1>
 
 <table>
   <tr>
@@ -40,6 +40,16 @@
     <td><%= link_to 'Destroy', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
+<tr>
+  <td><strong>Total</strong></td>
+  <td><strong>$
+    <% total = 0 %>
+    <% @items.each do |item| %>
+    <% total += item.price.to_i %>
+    <% end %>
+    <%= total.to_s %>
+  </strong></td>
+</tr>
 </table>
 
 <br />
