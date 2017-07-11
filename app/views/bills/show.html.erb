@@ -30,7 +30,7 @@
     <th></th>
   </tr>
 
-<% @items.reverse.drop(1).reverse.each do |item| %>
+<% @items.each do |item| %>
   <tr>
     <td><%= item.name %></td>
     <td><%= item.description %></td>
@@ -44,4 +44,4 @@
 
 <br />
 
-<%= link_to 'New Item', new_bill_item_path(@bill, @bill.items.ids) %>
+<%= link_to 'New Item', new_bill_item_path(@bill) %>
