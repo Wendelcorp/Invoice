@@ -11,6 +11,7 @@ class BillsController < ApplicationController
   # GET /bills/1.json
   def show
     @items = @bill.items
+    @customers = @bill.customers
   end
 
   # GET /bills/new
@@ -70,6 +71,6 @@ class BillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def bill_params
-      params.require(:bill).permit(:client, :description, :due, items_attributes: [:id, :name, :description, :price])
+      params.require(:bill).permit(:client, :description, :due, items_attributes: [:id, :name, :description, :price], customers_attributes: [:id, :name, :address1, :address2, :city, :zip, :phone])
     end
 end

@@ -2,7 +2,20 @@
 
 <p>
   <strong>Client:</strong>
-  <%= @bill.client %>
+<%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+<% @customers.each do |customer| %>
+
+    <p><%= customer.name %><br>
+    <%= customer.address1 %><br>
+    <%= customer.address2 %><br>
+    <%= customer.city %><br>
+    <%= customer.zip %><br>
+    <%= customer.phone %><br>
+    <td><%= link_to 'Show', [customer.bill, customer] %></td>
+    <td><%= link_to 'Edit', edit_bill_customer_path(customer.bill, customer) %></td>
+    <td><%= link_to 'Destroy', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
+
+<% end %>
 </p>
 
 <p>

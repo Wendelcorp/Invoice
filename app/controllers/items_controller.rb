@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     @item = @bill.items.build(item_params)
 
     if @item.save
-      redirect_to([@item.bill, @item], notice: 'Item was successfully created.')
+      redirect_to(@bill, notice: 'Item was successfully created.')
     else
       render action: 'new'
     end
@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   # PUT bills/1/items/1
   def update
     if @item.update_attributes(item_params)
-      redirect_to([@item.bill, @item], notice: 'Item was successfully updated.')
+      redirect_to(@bill, notice: 'Item was successfully updated.')
     else
       render action: 'edit'
     end
@@ -44,7 +44,7 @@ class ItemsController < ApplicationController
   def destroy
     @item.destroy
 
-    redirect_to bill_items_url(@bill)
+    redirect_to bill_url(@bill)
   end
 
   private
