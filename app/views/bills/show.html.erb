@@ -1,25 +1,34 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'All Bills', bills_path %> | <%= link_to 'Edit Bill', edit_bill_path(@bill) %> <br><br>
+<%= link_to 'All Invoices', bills_path %> | <%= link_to 'Edit Invoice', edit_bill_path(@bill) %> <br><br>
 <strong>Note: </strong><%= @bill.description %> <br>
-<strong>Due: </strong><%= @bill.due %><br><br>
+<strong>Date: </strong><%= @bill.due %><br><br>
 
-  <% if (@customers.length < 1) %>
-    <strong>Client:</strong>
-    <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
-  <% end %>
+<% if (@customers.length < 1) %>
+  <strong>Client:</strong>
+  <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+<% end %>
 
 <% @customers.each do |customer| %>
     <%= customer.name %><br>
     <%= customer.address1 %><br>
     <%= customer.address2 %><br>
     <%= customer.city %><br>
+    <%= customer.state %><br>
     <%= customer.zip %><br>
     <%= customer.phone %><br>
     <td><%= link_to 'Edit', edit_bill_customer_path(customer.bill, customer) %></td>
     <td><%= link_to 'Remove', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
+<br><br>
 
-<h3>Charges</h3>
+<%= @profile.name %><br>
+<%= @profile.address1 %><br>
+<%= @profile.address2 %><br>
+<%= @profile.city %><br>
+<%= @profile.state %><br>
+<%= @profile.zip %><br>
+<%= @profile.phone %><br>
+<br><br>
 
 <table>
   <tr>

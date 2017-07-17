@@ -1,41 +1,48 @@
-<%= form_for([@customer.bill, @customer]) do |f| %>
-  <% if @customer.errors.any? %>
+<%= form_for(profile) do |f| %>
+  <% if profile.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
       <ul>
-      <% c@ustomer.errors.full_messages.each do |message| %>
+      <% profile.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
+
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
-    <%= f.label :address1, "Address Line 1" %><br />
+    <%= f.label :address1 %>
     <%= f.text_field :address1 %>
   </div>
+
   <div class="field">
-    <%= f.label :address2, "Address Line 2" %><br />
+    <%= f.label :address2 %>
     <%= f.text_field :address2 %>
   </div>
+
   <div class="field">
-    <%= f.label :city %><br />
+    <%= f.label :city %>
     <%= f.text_field :city %>
   </div>
+
   <div class="field">
-    <%= f.label :state, "State / Province" %><br />
+    <%= f.label :state %>
     <%= f.text_field :state %>
   </div>
+
   <div class="field">
-    <%= f.label :zip, "Zip / Postal Code" %><br />
+    <%= f.label :zip %>
     <%= f.text_field :zip %>
   </div>
+
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label :phone %>
     <%= f.text_field :phone %>
   </div>
 

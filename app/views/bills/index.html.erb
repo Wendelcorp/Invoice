@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Bills</h1>
+<h1>Invoices</h1>
 
 <table>
   <thead>
@@ -28,4 +28,9 @@
 
 <br>
 
-<%= link_to 'New Bill', new_bill_path %>
+<%= link_to 'New Invoice', new_bill_path %> <br>
+<% if (Profile.all.length < 1) %>
+<%= link_to 'Add Profile', new_profile_path %>
+<% else %>
+<%= link_to 'Edit Profile', edit_profile_path(Profile.first) %>
+<% end %>

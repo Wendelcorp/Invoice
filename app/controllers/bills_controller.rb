@@ -12,6 +12,7 @@ class BillsController < ApplicationController
   def show
     @items = @bill.items
     @customers = @bill.customers
+    @profile = Profile.first
   end
 
   # GET /bills/new
