@@ -1,37 +1,25 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'All Bills', bills_path %> | <%= link_to 'Edit Bill', edit_bill_path(@bill) %> <br><br>
+<strong>Note: </strong><%= @bill.description %> <br>
+<strong>Due: </strong><%= @bill.due %><br><br>
 
-<p>
-  <strong>Client:</strong>
-<%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+  <% if (@customers.length < 1) %>
+    <strong>Client:</strong>
+    <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+  <% end %>
+
 <% @customers.each do |customer| %>
-
-    <p><%= customer.name %><br>
+    <%= customer.name %><br>
     <%= customer.address1 %><br>
     <%= customer.address2 %><br>
     <%= customer.city %><br>
     <%= customer.zip %><br>
     <%= customer.phone %><br>
-    <td><%= link_to 'Show', [customer.bill, customer] %></td>
     <td><%= link_to 'Edit', edit_bill_customer_path(customer.bill, customer) %></td>
-    <td><%= link_to 'Destroy', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
-
+    <td><%= link_to 'Remove', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
 <% end %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @bill.description %>
-</p>
-
-<p>
-  <strong>Due:</strong>
-  <%= @bill.due %>
-</p>
-
-<%= link_to 'Edit', edit_bill_path(@bill) %> |
-<%= link_to 'Back', bills_path %>
-
-<h1>Work Completed</h1>
+<h3>Charges</h3>
 
 <table>
   <tr>
@@ -47,10 +35,9 @@
   <tr>
     <td><%= item.name %></td>
     <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><%= link_to 'Show', [item.bill, item] %></td>
+    <td>$<%= item.price %>.00</td>
     <td><%= link_to 'Edit', edit_bill_item_path(item.bill, item) %></td>
-    <td><%= link_to 'Destroy', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Remove', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 <tr>
@@ -60,7 +47,7 @@
     <% @items.each do |item| %>
     <% total += item.price.to_i %>
     <% end %>
-    <%= total.to_s %>
+    <%= total.to_s %>.00
   </strong></td>
 </tr>
 </table>
