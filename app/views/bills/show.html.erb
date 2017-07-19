@@ -48,15 +48,12 @@
       <%= @profile.phone %><br>
     </div>
   </div>
-  <table>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
+  <div class="line-items-head">
+      <span class="line-name-head">Name</span>
+      <span class="line-description-head">Description</span>
+      <span class="line-price-head">Price</span>
+      <span class="line-edit-head">Price</span>
+  </div>
     <% @items.each do |item| %>
     <div class="line-items">
       <span class="line-name"><%= item.name %></span>
@@ -77,6 +74,10 @@
       <%= total.to_s %>.00
     </strong></td>
   </tr>
-  </table>
 
+  <div class="row">
+    <div style="border:2px solid blue" class="col-md-4"></div>
+    <div style="border:2px solid blue" class="col-md-4"></div>
+    <div style="border:2px solid blue" class="col-md-4"></div>
+  </div>
 </div>
