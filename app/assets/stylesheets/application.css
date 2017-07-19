@@ -13,3 +13,172 @@
  *= require_tree .
  *= require_self
  */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  background-color: #FBFBFB;
+  font-family: 'Roboto', sans-serif;
+  color: #323232;
+}
+h1 {
+  font-size: 58px;
+}
+p {
+  color: #323232;
+}
+
+.width-control {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.navbar {
+  background-color: #323232;
+  width: 100%;
+  height: 65px;
+  padding-left: 45px;
+  color: white;
+  line-height: 65px;
+  margin-bottom: 80px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #686868;
+  text-transform: uppercase;
+}
+.nav-item a:hover {
+  background-color: #323232;
+  color: #FBFBFB;
+}
+.header {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.header-left {
+    padding: 20px 40px;
+    flex: 3;
+}
+
+.header-right {
+    padding: 20px 40px;
+    flex: 1;
+}
+
+.bill-id {
+  font-weight: bolder;
+  margin-bottom: -15px;
+  display: block;
+  color: #686868;
+  letter-spacing: 1;
+}
+
+.label-blue {
+  background-color: #1D96F5;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 15px;
+  color: white;
+  border-radius: 2px;
+  margin-right: 10px;
+  -webkit-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+}
+
+.date {
+  text-align: center;
+  width: 110px;
+  height: 120px;
+  border-radius: 4px;
+  margin-top: 15px;
+  -webkit-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+}
+
+.year, .month {
+  text-transform: uppercase;
+  font-weight: bolder;
+  color: #686868;
+  letter-spacing: 0.8px;
+  display: inline-block;
+}
+
+.month {
+  margin-top: 12px;
+}
+
+.day {
+  font-size: 46px;
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.personal-details {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 20px 40px;
+}
+
+.address {
+  width: 250px;
+  margin-top: 25px;
+}
+
+.address-head {
+  text-transform: uppercase;
+  font-weight: bolder;
+  margin-bottom: 5px;
+  display: block;
+  color: #686868;
+  letter-spacing: 0.8px;
+}
+
+.edit-address {
+  margin-top: 15px;
+  display: block;
+}
+
+.line-items {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 4px;
+  border: 1px solid #EBEBEB;
+}
+
+.line-items:hover {
+  -webkit-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  -moz-box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  box-shadow: 0px 7px 28px 3px rgba(0,0,0,0.14);
+  border: 1px solid #EBEBEB;
+}
+
+.line-name {
+  width: 150px;
+  flex: 2 auto;
+  padding-left: 20px;
+}
+
+.line-description {
+  width: 350px;
+  flex: 10 auto;
+  padding-left: 20px;
+}
+
+.line-price {
+  width: 100px;
+  flex: 2 auto;
+  padding-left: 20px;
+}
+
+.line-edit {
+  width: 100px;
+  flex: 1 auto;
+  padding-left: 20px;
+}

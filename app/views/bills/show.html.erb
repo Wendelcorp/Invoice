@@ -1,66 +1,84 @@
-<p id="notice"><%= notice %></p>
-<%= link_to 'All Invoices', bills_path %> | <%= link_to 'Edit Invoice', edit_bill_path(@bill) %> <br><br>
-<strong>Note: </strong><%= @bill.description %> <br>
-<strong>Date: </strong><%= @bill.due %><br><br>
-
-<% if (@customers.length < 1) %>
-  <strong>Client:</strong>
-  <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
-<% end %>
-
-<% @customers.each do |customer| %>
-    <%= customer.name %><br>
-    <%= customer.address1 %><br>
-    <%= customer.address2 %><br>
-    <%= customer.city %><br>
-    <%= customer.state %><br>
-    <%= customer.zip %><br>
-    <%= customer.phone %><br>
-    <td><%= link_to 'Edit', edit_bill_customer_path(customer.bill, customer) %></td>
-    <td><%= link_to 'Remove', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
-<% end %>
-<br><br>
-
-<%= @profile.name %><br>
-<%= @profile.address1 %><br>
-<%= @profile.address2 %><br>
-<%= @profile.city %><br>
-<%= @profile.state %><br>
-<%= @profile.zip %><br>
-<%= @profile.phone %><br>
-<br><br>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @items.each do |item| %>
-  <tr>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
-    <td>$<%= item.price %>.00</td>
-    <td><%= link_to 'Edit', edit_bill_item_path(item.bill, item) %></td>
-    <td><%= link_to 'Remove', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-<tr>
-  <td><strong>Total</strong></td>
-  <td><strong>$
-    <% total = 0 %>
+<div class="navbar">
+  <span class="nav-item"><%= link_to 'All Invoices', bills_path %></span>
+</div>
+<div class="width-control">
+  <div class="header">
+    <div class="header-left">
+      <span class="bill-id">#<%= @bill.id %></span><br>
+      <h1>Invoice</h1>
+      <span class="label-blue">Project</span><%= @bill.description %> <%= link_to 'Edit', edit_bill_path(@bill) %>
+    </div>
+    <div class="header-right">
+      <div class="date">
+        <span class="month"><%= @bill.due.strftime("%B") %></span><br>
+        <span class="day"><%= @bill.due.day %></span><br>
+        <span class="year"><%= @bill.due.year %></span>
+      </div>
+    </div>
+  </div>
+  <% if (@customers.length < 1) %>
+    <strong>Client:</strong>
+    <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+  <% end %>
+  <div class="personal-details">
+    <div class="address">
+    <span class="address-head">Bill to</span><br>
+      <% @customers.each do |customer| %>
+          <%= customer.name %><br>
+          <%= customer.address1 %><br>
+          <%= customer.address2 %><br>
+          <%= customer.city %><br>
+          <%= customer.state %><br>
+          <%= customer.zip %><br>
+          <%= customer.phone %><br>
+          <span class="edit-address">
+            <td><%= link_to 'Edit', edit_bill_customer_path(customer.bill, customer) %></td>
+            <td><%= link_to 'Remove', [customer.bill, customer], :confirm => 'Are you sure?', :method => :delete %></td>
+          </span>
+      <% end %>
+    </div>
+    <div class="address">
+    <span class="address-head">Pay to</span><br>
+      <%= @profile.name %><br>
+      <%= @profile.address1 %><br>
+      <%= @profile.address2 %><br>
+      <%= @profile.city %><br>
+      <%= @profile.state %><br>
+      <%= @profile.zip %><br>
+      <%= @profile.phone %><br>
+    </div>
+  </div>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
     <% @items.each do |item| %>
-    <% total += item.price.to_i %>
+    <div class="line-items">
+      <span class="line-name"><%= item.name %></span>
+      <span class="line-description"><%= item.description %></span>
+      <span class="line-price">$<%= item.price %>.00</span>
+      <span class="line-edit"><%= link_to 'Edit', edit_bill_item_path(item.bill, item) %> | <%= link_to 'Remove', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></span>
+      <br>
+    </div>
     <% end %>
-    <%= total.to_s %>.00
-  </strong></td>
-</tr>
-</table>
+  <tr>
+    <td><strong>Total</strong></td>
+    <td><strong>$
+      <% total = 0 %>
+      <% @items.each do |item| %>
+      <% total += item.price.to_i %>
+      <% end %>
+      <%= total.to_s %>.00
+    </strong></td>
+  </tr>
+  </table>
 
-<br />
+  <br />
 
-<%= link_to 'New Item', new_bill_item_path(@bill) %>
+  <%= link_to 'New Item', new_bill_item_path(@bill) %>
+</div>
