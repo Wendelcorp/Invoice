@@ -66,6 +66,7 @@
       <br>
     </div>
     <% end %>
+    <%= link_to 'New Item', new_bill_item_path(@bill) %>
   <tr>
     <td><strong>Total</strong></td>
     <td><strong>$
@@ -78,7 +79,4 @@
   </tr>
   </table>
 
-  <br />
-
-  <%= link_to 'New Item', new_bill_item_path(@bill) %>
 </div>
