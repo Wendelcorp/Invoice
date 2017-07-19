@@ -2,13 +2,13 @@
   <span class="nav-item"><%= link_to 'All Invoices', bills_path %></span>
 </div>
 <div class="width-control">
-  <div class="header">
-    <div class="header-left">
+  <div class="header row">
+    <div class="header-left col-md-9">
       <span class="bill-id">#<%= @bill.id %></span><br>
       <h1>Invoice</h1>
       <span class="label-blue">Project</span><%= @bill.description %> <%= link_to 'Edit', edit_bill_path(@bill) %>
     </div>
-    <div class="header-right">
+    <div class="header-right col-md-3">
       <div class="date">
         <span class="month"><%= @bill.due.strftime("%B") %></span><br>
         <span class="day"><%= @bill.due.day %></span><br>
@@ -16,12 +16,13 @@
       </div>
     </div>
   </div>
-  <% if (@customers.length < 1) %>
-    <strong>Client:</strong>
-    <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
-  <% end %>
-  <div class="personal-details">
-    <div class="address">
+
+  <div class="personal-details row">
+    <div class="address col-md-4">
+      <% if (@customers.length < 1) %>
+        <strong>Client:</strong>
+        <%= link_to 'Add Client', new_bill_customer_path(@bill) %>
+      <% end %>
     <span class="address-head">Bill to</span><br>
       <% @customers.each do |customer| %>
           <%= customer.name %><br>
@@ -37,7 +38,7 @@
           </span>
       <% end %>
     </div>
-    <div class="address">
+    <div class="address col-md-4">
     <span class="address-head">Pay to</span><br>
       <%= @profile.name %><br>
       <%= @profile.address1 %><br>
@@ -48,18 +49,18 @@
       <%= @profile.phone %><br>
     </div>
   </div>
-  <div class="line-items-head">
-      <span class="line-name-head">Name</span>
-      <span class="line-description-head">Description</span>
-      <span class="line-price-head">Price</span>
-      <span class="line-edit-head">Price</span>
+  <div class="line-items-head row">
+      <span class="line-name-head col-md-2">Name</span>
+      <span class="line-description-head col-md-7">Description</span>
+      <span class="line-price-head col-md-1">Price</span>
+      <span class="line-edit-head col-md-2"></span>
   </div>
     <% @items.each do |item| %>
-    <div class="line-items">
-      <span class="line-name"><%= item.name %></span>
-      <span class="line-description"><%= item.description %></span>
-      <span class="line-price">$<%= item.price %>.00</span>
-      <span class="line-edit"><%= link_to 'Edit', edit_bill_item_path(item.bill, item) %> | <%= link_to 'Remove', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></span>
+    <div class="line-items row">
+      <span class="line-name col-md-2"><%= item.name %></span>
+      <span class="line-description col-md-7"><%= item.description %></span>
+      <span class="line-price col-md-1">$<%= item.price %>.00</span>
+      <span class="line-edit col-md-2"><%= link_to 'Edit', edit_bill_item_path(item.bill, item) %> | <%= link_to 'Remove', [item.bill, item], :confirm => 'Are you sure?', :method => :delete %></span>
       <br>
     </div>
     <% end %>
